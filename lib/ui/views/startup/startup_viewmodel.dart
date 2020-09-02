@@ -4,13 +4,9 @@ import 'package:yepi/app/locator.dart';
 import 'package:yepi/app/router.gr.dart';
 
 class StartupViewModel extends BaseViewModel {
-  NavigationService _navigationService = locator<NavigationService>();
+  final NavigationService _navigationService = locator<NavigationService>();
 
-  redirctToHome() async {
-    await _navigationService.replaceWith(Routes.homeView);
-  }
-
-  init() {
-    redirctToHome();
+  Future navigateToHome() async {
+    await _navigationService.navigateTo(Routes.parentView);
   }
 }

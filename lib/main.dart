@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stacked_services/stacked_services.dart';
 import 'package:yepi/app/locator.dart';
 
 import 'app/router.gr.dart';
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Yepi',
       theme: ThemeData(backgroundColor: Color(0xFFEEE0CB)),
-      initialRoute: Routes.homeView,
+      navigatorKey: locator<NavigationService>().navigatorKey,
+      initialRoute: Routes.startupView,
       onGenerateRoute: Router().onGenerateRoute,
     );
   }
