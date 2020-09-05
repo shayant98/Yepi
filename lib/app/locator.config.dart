@@ -9,6 +9,7 @@ import 'package:injectable/injectable.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../services/auth_service.dart';
+import '../services/firestore_service.dart';
 import '../services/third_party_services_module.dart';
 
 /// adds generated dependencies
@@ -22,9 +23,12 @@ GetIt $initGetIt(
   final gh = GetItHelper(get, environment, environmentFilter);
   final thirdPartyServicesModule = _$ThirdPartyServicesModule();
   gh.lazySingleton<AuthService>(() => thirdPartyServicesModule.authService);
-  gh.lazySingleton<DialogService>(() => thirdPartyServicesModule.dialogService);
+  gh.lazySingleton<FirestoreService>(
+      () => thirdPartyServicesModule.firestoreService);
   gh.lazySingleton<NavigationService>(
       () => thirdPartyServicesModule.navigationService);
+  gh.lazySingleton<SnackbarService>(
+      () => thirdPartyServicesModule.snackbarService);
   return get;
 }
 
@@ -32,7 +36,9 @@ class _$ThirdPartyServicesModule extends ThirdPartyServicesModule {
   @override
   AuthService get authService => AuthService();
   @override
-  DialogService get dialogService => DialogService();
+  FirestoreService get firestoreService => FirestoreService();
   @override
   NavigationService get navigationService => NavigationService();
+  @override
+  SnackbarService get snackbarService => SnackbarService();
 }

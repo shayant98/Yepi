@@ -13,7 +13,7 @@ class StartupView extends StatelessWidget {
         viewModelBuilder: () => StartupViewModel(),
         onModelReady: (model) {
           SchedulerBinding.instance
-              .addPostFrameCallback((_) => model.navigateToHome());
+              .addPostFrameCallback((_) => model.handleStartupLogic());
         });
   }
 }

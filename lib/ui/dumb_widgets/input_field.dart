@@ -4,15 +4,22 @@ class InputFieldWidget extends StatelessWidget {
   final TextInputType inputType;
   final String label;
   final bool isPassword;
+  final TextEditingController controller;
 
-  const InputFieldWidget({Key key, this.inputType, this.label, this.isPassword})
+  const InputFieldWidget(
+      {Key key,
+      @required this.inputType,
+      this.label,
+      this.isPassword,
+      @required this.controller})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextFormField(
+        TextField(
+          controller: controller,
           keyboardType: inputType,
           obscureText: isPassword ?? false,
           decoration: InputDecoration(

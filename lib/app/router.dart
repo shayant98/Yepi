@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route_annotations.dart';
 import 'package:yepi/ui/views/entry/post_view.dart';
-import 'package:yepi/ui/views/events/events_view.dart';
 import 'package:yepi/ui/views/home/home_view.dart';
 import 'package:yepi/ui/views/login/login_view.dart';
 import 'package:yepi/ui/views/mood/mood_view.dart';

@@ -41,6 +41,7 @@ class LoginView extends StatelessWidget {
                     height: 5,
                   ),
                   InputFieldWidget(
+                    controller: model.emailController,
                     inputType: TextInputType.emailAddress,
                     label: "eg. example@example.com",
                   ),
@@ -52,6 +53,7 @@ class LoginView extends StatelessWidget {
                     height: 5,
                   ),
                   InputFieldWidget(
+                    controller: model.passwordController,
                     label: "Password",
                     inputType: TextInputType.text,
                     isPassword: true,
@@ -70,8 +72,13 @@ class LoginView extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerRight,
                     child: FlatButtonWidget(
+                      isBusy: model.isBusy,
                       title: "Login",
-                      onPressed: model.navigateToHome,
+                      onPressed: () {
+                        model.signIn(
+                            email: model.emailController.text,
+                            password: model.passwordController.text);
+                      },
                     ),
                   ),
                   SizedBox(
