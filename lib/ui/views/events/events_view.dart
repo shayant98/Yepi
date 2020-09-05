@@ -15,9 +15,6 @@ class EventsView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 50,
-              ),
               TitleWidget(
                 title: "Events",
               ),

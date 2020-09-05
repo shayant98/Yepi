@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "58811426223",
+    "firebase_url": "https://yepi-75353.firebaseio.com",
+    "project_id": "yepi-75353",
+    "storage_bucket": "yepi-75353.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58811426223:android:7cb264cca8986505d57b5a",
+        "android_client_info": {
+          "package_name": "com.shayant.yepi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "58811426223-i03cnvr7edapef07lubg9vvgqd4nvedn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxJLr-8nRR02ez4R424PsycVJzhizVVnM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "58811426223-i03cnvr7edapef07lubg9vvgqd4nvedn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

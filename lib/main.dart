@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Yepi',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(backgroundColor: Color(0xFFEEE0CB)),
       navigatorKey: locator<NavigationService>().navigatorKey,
       initialRoute: Routes.startupView,

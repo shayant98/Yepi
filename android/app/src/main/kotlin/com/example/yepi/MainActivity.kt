@@ -1,4 +1,4 @@
-package com.example.yepi
+package com.shayant.yepi
 
 import io.flutter.embedding.android.FlutterActivity
 

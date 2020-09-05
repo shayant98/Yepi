@@ -9,7 +9,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../ui/views/entry/post_view.dart';
 import '../ui/views/home/home_view.dart';
+import '../ui/views/login/login_view.dart';
+import '../ui/views/mood/mood_view.dart';
 import '../ui/views/parent/parent_view.dart';
 import '../ui/views/startup/startup_view.dart';
 
@@ -17,10 +20,16 @@ class Routes {
   static const String startupView = '/';
   static const String homeView = '/home-view';
   static const String parentView = '/parent-view';
+  static const String moodView = '/mood-view';
+  static const String postView = '/post-view';
+  static const String loginView = '/login-view';
   static const all = <String>{
     startupView,
     homeView,
     parentView,
+    moodView,
+    postView,
+    loginView,
   };
 }
 
@@ -31,6 +40,9 @@ class Router extends RouterBase {
     RouteDef(Routes.startupView, page: StartupView),
     RouteDef(Routes.homeView, page: HomeView),
     RouteDef(Routes.parentView, page: ParentView),
+    RouteDef(Routes.moodView, page: MoodView),
+    RouteDef(Routes.postView, page: PostView),
+    RouteDef(Routes.loginView, page: LoginView),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -50,6 +62,24 @@ class Router extends RouterBase {
     ParentView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => ParentView(),
+        settings: data,
+      );
+    },
+    MoodView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => MoodView(),
+        settings: data,
+      );
+    },
+    PostView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => PostView(),
+        settings: data,
+      );
+    },
+    LoginView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => LoginView(),
         settings: data,
       );
     },

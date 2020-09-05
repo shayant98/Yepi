@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class TitleWidget extends StatelessWidget {
   final String title;
-  const TitleWidget({Key key, this.title}) : super(key: key);
+  final bool showProfile;
+  const TitleWidget({Key key, this.title, this.showProfile}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,19 +33,14 @@ class TitleWidget extends StatelessWidget {
             ),
           ],
         ),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              icon: Icon(Icons.person_outline),
-              onPressed: () {},
-              iconSize: 24,
-              color: Color(0xFF1B4079),
-            ),
-            // IconButton(icon: Icon(Icons.settings), onPressed: () {})
-          ],
-        )
+        (showProfile == true)
+            ? IconButton(
+                icon: Icon(Icons.person_outline),
+                onPressed: () {},
+                iconSize: 24,
+                color: Color(0xFF1B4079),
+              )
+            : Container()
       ],
     );
   }
