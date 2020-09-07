@@ -32,7 +32,8 @@ dependencies:
   injectable:
 
   table_calendar: ^2.2.3
-
+  shared_preferences: ^0.5.10
+  intl: ^0.16.1
   firebase_auth: ^0.18.0+1
   cloud_firestore: ^0.14.0+2
   firebase_core: ^0.5.0

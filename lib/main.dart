@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:yepi/app/locator.dart';
+import 'package:yepi/services/local_storage_service.dart';
 
 import 'app/router.gr.dart';
 
@@ -9,6 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   setupLocator();
+  locator<LocalStorage>().getInstance();
   await Firebase.initializeApp();
   runApp(MyApp());
 }

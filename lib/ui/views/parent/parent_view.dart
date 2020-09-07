@@ -17,7 +17,9 @@ class ParentView extends StatelessWidget {
           actions: [
             IconButton(
               icon: Icon(Icons.person_outline),
-              onPressed: () {},
+              onPressed: () {
+                model.logOut();
+              },
               color: Colors.black,
             )
           ],

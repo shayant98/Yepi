@@ -69,17 +69,27 @@ class LoginView extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: FlatButtonWidget(
-                      isBusy: model.isBusy,
-                      title: "Login",
-                      onPressed: () {
-                        model.signIn(
-                            email: model.emailController.text,
-                            password: model.passwordController.text);
-                      },
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () => model.navigateToSignUp(),
+                        child: Text(
+                          "No account? Create one here",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 14),
+                        ),
+                      ),
+                      FlatButtonWidget(
+                        isBusy: model.isBusy,
+                        title: "Login",
+                        onPressed: () {
+                          model.signIn(
+                              email: model.emailController.text,
+                              password: model.passwordController.text);
+                        },
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 20,
@@ -107,13 +117,6 @@ class LoginView extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        "No account? Create one here",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 14),
-                      )),
                 ],
               ),
             ),

@@ -4,6 +4,7 @@ import 'package:yepi/ui/views/home/home_view.dart';
 import 'package:yepi/ui/views/login/login_view.dart';
 import 'package:yepi/ui/views/mood/mood_view.dart';
 import 'package:yepi/ui/views/parent/parent_view.dart';
+import 'package:yepi/ui/views/register/register_view.dart';
 import 'package:yepi/ui/views/startup/startup_view.dart';
 
 @MaterialAutoRouter(
@@ -15,6 +16,7 @@ import 'package:yepi/ui/views/startup/startup_view.dart';
     MaterialRoute(page: MoodView),
     MaterialRoute(page: PostView),
     MaterialRoute(page: LoginView),
+    MaterialRoute(page: RegisterView),
   ],
 )
 class $Router {}

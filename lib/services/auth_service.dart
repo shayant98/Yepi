@@ -51,8 +51,8 @@ class AuthService {
   }
 
   Future<bool> isUserLoggedIn() async {
-    var user = await _firebaseAuth.currentUser;
-
+    var user = _firebaseAuth.currentUser;
+    await populateCurrentUser(user);
     return user != null;
   }
 
@@ -60,5 +60,9 @@ class AuthService {
     if (user != null) {
       _currentUser = await _firestoreService.getUser(user.uid);
     }
+  }
+
+  logOut() async {
+    await _firebaseAuth.signOut();
   }
 }

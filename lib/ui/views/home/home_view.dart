@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:yepi/models/mood_model.dart';
 import 'package:yepi/ui/dumb_widgets/title_widget.dart';
 import 'package:yepi/ui/views/home/home_viewmodel.dart';
+import 'package:yepi/utils/date_util.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -59,35 +61,99 @@ class HomeView extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20)),
-                child: TableCalendar(
-                  calendarController: model.calendarController,
-                  initialCalendarFormat: CalendarFormat.twoWeeks,
-                  calendarStyle: CalendarStyle(
-                    highlightToday: false,
-                    outsideDaysVisible: false,
-                    weekendStyle: TextStyle(
-                      color: Colors.black,
-                    ),
-                    weekdayStyle: TextStyle(
-                      color: Colors.black,
-                    ),
-                    renderDaysOfWeek: false,
-                    outsideWeekendStyle: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                  headerStyle: HeaderStyle(
-                    formatButtonVisible: false,
-                    formatButtonShowsNext: false,
-                    centerHeaderTitle: true,
-                  ),
-                ),
+                child: (!model.dataReady)
+                    ? CircularProgressIndicator()
+                    : TableCalendar(
+                        calendarController: model.calendarController,
+                        initialCalendarFormat: CalendarFormat.twoWeeks,
+                        builders: CalendarBuilders(
+                            markersBuilder: (_, date, events, holidays) {
+                          final children = <Widget>[];
+
+                          if (events.isNotEmpty) {
+                            children.add(
+                              Container(
+                                height: 10,
+                                width: 10,
+                                decoration: BoxDecoration(
+                                    color: Color(0xFF2E4057),
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            );
+                          }
+
+                          return children;
+                        }, selectedDayBuilder: (_, date, events) {
+                          return Container(
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: Color(0xFF6B8F71),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '${date.day}',
+                                  style: TextStyle().copyWith(
+                                      fontSize: 16.0, color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          );
+                        }),
+                        onDaySelected: (date, events) {
+                          showDialog(
+                            context: context,
+                            builder: (_) => AlertDialog(
+                              title: Text(
+                                  "On ${DateUtil().formatDate(dateTime: date, format: 'd MMMM, yyyy')} you felt:"),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
+                              content: SizedBox(
+                                height: 100,
+                                child: Column(
+                                  children: [
+                                    Icon(
+                                      Icons.sentiment_satisfied,
+                                      size: 74,
+                                      color: Color(0xFF6B8F71),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            barrierDismissible: true,
+                          );
+                        },
+                        events: model.moodMap,
+                        calendarStyle: CalendarStyle(
+                          highlightToday: false,
+                          outsideDaysVisible: false,
+                          weekendStyle: TextStyle(
+                            color: Colors.black,
+                          ),
+                          weekdayStyle: TextStyle(
+                            color: Colors.black,
+                          ),
+                          renderDaysOfWeek: false,
+                          outsideWeekendStyle: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                        headerStyle: HeaderStyle(
+                          formatButtonVisible: false,
+                          formatButtonShowsNext: false,
+                          centerHeaderTitle: true,
+                        ),
+                      ),
               )
             ],
           ),
         ),
       ),
       viewModelBuilder: () => HomeViewModel(),
+      onModelReady: (model) => model.init(),
     );
   }
 }

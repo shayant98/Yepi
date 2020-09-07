@@ -14,6 +14,7 @@ import '../ui/views/home/home_view.dart';
 import '../ui/views/login/login_view.dart';
 import '../ui/views/mood/mood_view.dart';
 import '../ui/views/parent/parent_view.dart';
+import '../ui/views/register/register_view.dart';
 import '../ui/views/startup/startup_view.dart';
 
 class Routes {
@@ -23,6 +24,7 @@ class Routes {
   static const String moodView = '/mood-view';
   static const String postView = '/post-view';
   static const String loginView = '/login-view';
+  static const String registerView = '/register-view';
   static const all = <String>{
     startupView,
     homeView,
@@ -30,6 +32,7 @@ class Routes {
     moodView,
     postView,
     loginView,
+    registerView,
   };
 }
 
@@ -43,6 +46,7 @@ class Router extends RouterBase {
     RouteDef(Routes.moodView, page: MoodView),
     RouteDef(Routes.postView, page: PostView),
     RouteDef(Routes.loginView, page: LoginView),
+    RouteDef(Routes.registerView, page: RegisterView),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -80,6 +84,12 @@ class Router extends RouterBase {
     LoginView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => LoginView(),
+        settings: data,
+      );
+    },
+    RegisterView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => RegisterView(),
         settings: data,
       );
     },
