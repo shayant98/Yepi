@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:stacked/stacked.dart';
 import 'package:yepi/ui/dumb_widgets/flat_button_widget.dart';
 import 'package:yepi/ui/dumb_widgets/input_field.dart';
 import 'package:yepi/ui/dumb_widgets/title_widget.dart';
 import 'package:yepi/ui/views/entry/post_viewmodel.dart';
-import 'package:yepi/ui/views/startup/startup_viewmodel.dart';
 
 class PostView extends StatelessWidget {
   @override

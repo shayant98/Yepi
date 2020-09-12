@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:yepi/models/mood_model.dart';
+import 'package:yepi/models/post_model.dart';
 import 'package:yepi/models/user_model.dart';
 
 class FirestoreService {
@@ -38,6 +39,29 @@ class FirestoreService {
       }
     } catch (e) {
       return null;
+    }
+  }
+
+  Future<List<PostModel>> getUserPrivatePosts(String id) async {
+    try {
+      var postData = await _userCollection
+          .doc(id)
+          .collection('posts')
+          .orderBy("date", descending: true)
+          .get();
+      if (postData.docs.isNotEmpty) {
+        List<PostModel> moods = postData.docs
+            .map(
+                (QueryDocumentSnapshot snapshot) => PostModel.fromMap(snapshot))
+            .toList();
+        print(123);
+
+        return moods;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      return e;
     }
   }
 }
